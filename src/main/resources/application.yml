@@ -1,0 +1,28 @@
+server:
+    port: 9090
+
+spring:
+    main:
+        allow-circular-references: true
+    application:
+        name: json-cassandra
+    data:
+        cassandra:
+            keyspace-name: main
+            username: EmFhBWohcOMkrZJWpfMubtBh
+            password: ojbirTWNPTQURWG4.sM.zX3cQZ5Y,ysCUIhuXh6SU.uXhZF7Fb1,i6.1n1kOYMuXl9TUKrjd0ZgrLZnw9q.2d646LDluN9bLH6Ws2hCX9XYlHzasSvG3AMJZWuf5FuE-
+            schema-action: recreate
+            request:
+                timeout: 100s
+            connection:
+                connect-timeout: 100s
+                init-query-timeout: 100s
+
+datastax.astra:
+    secure-connect-bundle: secure-connect.zip
+
+astra.db:
+    id: b28d7760-de03-4bdd-a68c-cdcb999cdd58-1
+    region: asia-south1
+    keyspace: main
+    application.token: AstraCS:EmFhBWohcOMkrZJWpfMubtBh:e34479795ad451563ca0adce7a6ba070d8365857ee1af86a8c2573e6664f4763

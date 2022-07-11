@@ -17,14 +17,45 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-cassandra</artifactId>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>com.datastax.cassandra</groupId>-->
+<!--					<artifactId>cassandra-driver-core</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-data-cassandra</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.datastax.cassandra</groupId>-->
+<!--			<artifactId>cassandra-driver-core</artifactId>-->
+<!--			<version>3.9.0</version>-->
+<!--			<type>pom</type>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.datastax.cassandra</groupId>-->
+<!--			<artifactId>cassandra-driver-mapping</artifactId>-->
+<!--			<version>3.9.0</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.datastax.cassandra</groupId>-->
+<!--			<artifactId>cassandra-driver-extras</artifactId>-->
+<!--			<version>3.9.0</version>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

@@ -8,6 +8,10 @@ import com.example.jsoncassandra.repository.TableSchemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 @Service
 public class TableSchemaServiceImpl implements TableSchemaService{
 
@@ -23,5 +27,14 @@ public class TableSchemaServiceImpl implements TableSchemaService{
 
     // map domain to response
     return TableSchemaMapper.toResponseFromDomain(updatedInvitationDomain);
+  }
+
+  @Override
+  public List<TableSchemaResponse> getTableSchema() {
+    tableSchemaRepository.findAll().forEach(t -> System.out.println(t.getName()));
+
+    return StreamSupport.stream(tableSchemaRepository.findAll().spliterator(), false)
+        .map(TableSchemaMapper::toResponseFromDomain)
+        .collect(Collectors.toList());
   }
 }

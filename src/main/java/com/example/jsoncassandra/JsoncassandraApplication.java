@@ -25,36 +25,44 @@ public class JsoncassandraApplication {
 
   @PostConstruct
   public void start() {
-//    System.out.println("creating keyspace");
-//    cqlSession.execute("CREATE KEYSPACE main WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };");
-    System.out.println("creating address_type table");
-    cqlSession.execute("CREATE TYPE IF NOT EXISTS main.address_type (\n" +
-        "first_name text,\n" +
-        "middle_initial text,\n" +
-        "last_name text,\n" +
-        "street_name text,\n" +
-        "additional_address text,\n" +
-        "city text,\n" +
-        "state text,\n" +
-        "zip text,\n" +
-        "country text,\n" +
-        "phone text,\n" +
+
+    System.out.println("creating UDT property_keys_type");
+    cqlSession.execute("CREATE TYPE IF NOT EXISTS cassandra_udt.property_key_type (\n" +
+        "name text,\n" +
+        "data_type text,\n" +
+        "cardinality text\n" +
         ");");
 
-    System.out.println("creatuing invitation table ");
-    cqlSession.execute("CREATE TABLE IF NOT EXISTS main.invitation (\n" +
-        "invitation_date date,\n" +
-        "invitation_to text,\n" +
-        "invitation_id uuid,\n" +
-        "invitation_type text,\n" +
-        "invitation_message text,\n" +
-        "invitation_from text,\n" +
-        "address frozen<main.address_type>,\n" +
-        "primary key(invitation_date, invitation_to, invitation_id)\n" +
-        ") with comment='Cassandra UDT Table';");
+    System.out.println("creating UDT vertex_label_type");
+    cqlSession.execute("CREATE TYPE IF NOT EXISTS cassandra_udt.vertex_label_type (\n" +
+        "name text\n" +
+        ");");
+
+    System.out.println("creating UDT edge_label_type");
+    cqlSession.execute("CREATE TYPE IF NOT EXISTS cassandra_udt.edge_label_type (\n" +
+        "name text,\n" +
+        "multiplicity text\n" +
+        ");");
+
+    System.out.println("creating UDT vertex_index_type");
+    cqlSession.execute("CREATE TYPE IF NOT EXISTS cassandra_udt.vertex_index_type (\n" +
+        "name text,\n" +
+        "propertyKeys list<text>,\n" +
+        "index_only text,\n" +
+        "mixed_index text,\n" +
+        "composite text\n" +
+        ");");
+
+    System.out.println("creating schema table ");
+    cqlSession.execute("CREATE TABLE IF NOT EXISTS cassandra_udt.table_schema (\n" +
+        "name text,\n" +
+        "propertyKeys list<frozen<cassandra_udt.property_key_type>>,\n" +
+        "vertexLabels list<frozen<cassandra_udt.vertex_label_type>>,\n" +
+        "edgeLabels list<frozen<cassandra_udt.edge_label_type>>,\n" +
+        "vertexIndices list<frozen<cassandra_udt.vertex_index_type>>,\n" +
+        "primary key(name)\n" +
+        ");");
   }
-
-
 
   @Bean
   public CqlSessionBuilderCustomizer sessionBuilderCustomizer(DataStaxAstraProperties astraProperties) {

@@ -8,7 +8,7 @@ spring:
         name: json-cassandra
     data:
         cassandra:
-            keyspace-name: main
+            keyspace-name: cassandra_udt
             username: EmFhBWohcOMkrZJWpfMubtBh
             password: ojbirTWNPTQURWG4.sM.zX3cQZ5Y,ysCUIhuXh6SU.uXhZF7Fb1,i6.1n1kOYMuXl9TUKrjd0ZgrLZnw9q.2d646LDluN9bLH6Ws2hCX9XYlHzasSvG3AMJZWuf5FuE-
             schema-action: recreate

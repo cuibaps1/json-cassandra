@@ -1,13 +1,9 @@
 package com.example.jsoncassandra.repository;
 
-import com.example.jsoncassandra.model.Invitation;
+import com.example.jsoncassandra.model.graph.TableSchema;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
-
 @Repository
-public interface InvitationRepository extends CrudRepository<Invitation, UUID> {
-
+public interface TableSchemaRepository extends CrudRepository<TableSchema, String> {
 }
-

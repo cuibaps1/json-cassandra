@@ -29,4 +29,10 @@ public class TableSchemaController {
   public List<TableSchemaResponse> getTableSchema() {
       return tableSchemaService.getTableSchema();
   }
+
+  @PatchMapping("/{name}")
+  public void updateTableSchema(@PathVariable(value = "name") String name,
+               @RequestBody TableSchemaRequest tableSchemaRequest){
+    tableSchemaService.updateTableSchema(name, tableSchemaRequest);
+  }
 }

@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface TableSchemaService {
-  TableSchemaResponse createTableSchema(TableSchemaRequest invitationRequest);
+  TableSchemaResponse createTableSchema(TableSchemaRequest tableSchemaRequest);
 
   List<TableSchemaResponse> getTableSchema();
+
+  void updateTableSchema(String name, TableSchemaRequest tableSchemaRequest);
 }
